@@ -2,15 +2,16 @@ public class Calculator {
 
     public int Add(String numbers){
 
-        if(numbers.isEmpty()) return 0;
+        int ans = 0;
 
-        int pos = numbers.indexOf(",");
+        String[] arrayOfNumbers = numbers.split(",",0);
 
-        if(pos==-1){
-            return Integer.parseInt(numbers);
-        }else{
-            return Integer.parseInt(numbers.substring(0,pos)) + Integer.parseInt(numbers.substring(pos+1));
+        for (String number : arrayOfNumbers){
+            if(!number.isEmpty())
+                ans += Integer.parseInt(number);
         }
+        
+        return ans;
 
     }
 }
