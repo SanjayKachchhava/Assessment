@@ -18,7 +18,10 @@ class CalculatorTest {
                 ()->assertEquals(6,calculator.Add("1\n2,3")),
                 ()->assertEquals(11,calculator.Add("//;\n1;2;8")),
                 ()->assertEquals(12,calculator.Add("//#\n2#2#8"))
-
         );
+
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            calculator.Add("//#\n2#-2#-8");
+        });
     }
 }

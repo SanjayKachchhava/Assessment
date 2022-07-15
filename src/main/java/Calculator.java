@@ -11,15 +11,27 @@ public class Calculator {
             delimiter = numbers.substring(2,pos);
             numbers = numbers.substring(pos+1);
 
+            // System.out.println(delimiter+" : " +numbers);
         }
         String[] arrayOfNumbers = numbers.split(delimiter);
 
-        for (String number : arrayOfNumbers){
+        String negativeNumbers = "";
 
-            if(!number.isEmpty())
-                ans += Integer.parseInt(number);
+        for (String number : arrayOfNumbers){
+            // System.out.println(number);
+            if(!number.isEmpty()){
+                int currentNumber = Integer.parseInt(number);
+                if(currentNumber<0){
+                    negativeNumbers += number + ", ";
+                }
+                ans += currentNumber;
+            }
+
         }
 
+        if(negativeNumbers.length()>0){
+            throw new IllegalArgumentException("negatives not allowed : "+ negativeNumbers);
+        }
         return ans;
     }
 }
